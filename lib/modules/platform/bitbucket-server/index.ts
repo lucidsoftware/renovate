@@ -864,6 +864,7 @@ export async function createPr({
   sourceBranch,
   targetBranch,
   prTitle: title,
+  draftPR,
   prBody: rawDescription,
   platformOptions,
 }: CreatePRConfig): Promise<Pr> {
@@ -905,6 +906,7 @@ export async function createPr({
     toRef: {
       id: `refs/heads/${base}`,
     },
+    draft: draftPR ?? false,
     reviewers,
   };
   let prInfoRes: HttpResponse<BbsRestPr>;
