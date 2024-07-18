@@ -43,6 +43,7 @@ export interface BbsRestPr {
   reviewers: BbsRestUserRef[];
   state: BbsRestPrState;
   title: string;
+  draft: boolean;
   toRef: BbsRestBranchRef;
   version?: number;
 }
