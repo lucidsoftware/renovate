@@ -83,9 +83,9 @@ function getNewValue({
   currentVersion,
   newVersion,
 }: NewValueConfig): string | null {
-  // LUCID hack. We want to pin versions to the newest available version. That might be what 'pin' is supposed to do.
+  // LUCID hack. We want to pin versions, only inside the currentValue range. That's probably what 'pin' is supposed to do.
   if (['pin', 'replace'].includes(rangeStrategy)) {
-    return newVersion;
+    return currentVersion ? currentVersion : null;
   }
   let npmNewVersion = npm.getNewValue({
     currentValue: hashicorp2npm(currentValue),
